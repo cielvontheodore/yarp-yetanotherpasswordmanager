@@ -1,0 +1,8 @@
+[package]
+name = "yarp-yetanotherpasswordmanager"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+dialoguer = "0.11"
+rpassword = "7.3"
