@@ -1,13 +1,16 @@
 use dialoguer::Select;
 use dialoguer::Input;
 use dialoguer::Password;
+use serde::Deserialize;
+use serde::Serialize;
+
 
 fn main() {
     println!("====================================================");
     println!("   Welcome to YARP (Yet AnotheR Password manager)   ");
     println!("====================================================");
 
-    let menu_options = vec![
+    loop {let menu_options = vec![
         "Add Password",
         "Review Password",
         "All Services",
@@ -42,7 +45,7 @@ fn main() {
             .interact()
             .unwrap();
 
-            println!("\nAccount for {service} under the username {username} is ready!")
+            println!("Account for {service} under the username {username} is ready!\n");
         }
 
         1 => {
@@ -55,14 +58,11 @@ fn main() {
             
         3 => {
             println!("You choose this option");
+            break;
         } 
-            
-        4 => {
-            println!("You choose this option");
-        } 
-            
+        
         _ => unreachable!(),
-    }
+    } }
 
 
 }
