@@ -1,4 +1,6 @@
 use dialoguer::Select;
+use dialoguer::Input;
+use dialoguer::Password;
 
 fn main() {
     println!("====================================================");
@@ -21,6 +23,46 @@ fn main() {
     
 
     println!("\nYou choose : {}\n", menu_options[option]);
+
+    match option {
+        0 => {
+            let service: String = Input::new()
+            .with_prompt("Service name ")
+            .interact()
+            .unwrap();
+
+            let username: String = Input::new()
+            .with_prompt("Profile name ")
+            .interact()
+            .unwrap();
+
+            let password: String = Password::new()
+            .with_prompt("Password ")
+            .with_confirmation("Confirm password ", "Passwords do not match! ")
+            .interact()
+            .unwrap();
+
+            println!("\nAccount for {service} under the username {username} is ready!")
+        }
+
+        1 => {
+            println!("You choose this option");
+        }
+   
+        2 => {
+            println!("You choose this option");
+        }
+            
+        3 => {
+            println!("You choose this option");
+        } 
+            
+        4 => {
+            println!("You choose this option");
+        } 
+            
+        _ => unreachable!(),
+    }
 
 
 }
