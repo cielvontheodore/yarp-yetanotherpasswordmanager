@@ -1,3 +1,5 @@
+use dialoguer::Select;
+
 fn main() {
     println!("====================================================");
     println!("   Welcome to YARP (Yet AnotheR Password manager)   ");
@@ -10,15 +12,15 @@ fn main() {
         "Exit",
     ];
 
-    let option = Select::() {
-        .with_prompt("Pilih aksi yang ingin kamu lakukan")
+    let option: usize = Select::new() 
+        .with_prompt("Choose action...")
         .items(&menu_options)
         .default(0)
         .interact()
         .unwrap();
-    }
+    
 
-    println!("\nYou choose :{}\n", menu_options[option]);
+    println!("\nYou choose : {}\n", menu_options[option]);
 
 
 }
