@@ -6,7 +6,11 @@ fn main() {
         println!("Initializing YARP!");
         // std::fs::File::create("vault.yarp"); this worked but yeah we're going harder than that,
         // angh harder daddy
-        std::fs::OpenOptions::new();
+        use std::fs::OpenOptions;
+        let result = OpenOptions::new()
+            .write(true)
+            .create_new(true)
+            .open("vault.yarp");
     };
 
 }
