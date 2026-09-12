@@ -11,6 +11,16 @@ fn main() {
             .write(true)
             .create_new(true)
             .open("vault.yarp");
+        match result {
+            Ok(created) => {
+                println!("yarp created!");
+            }
+
+            Err(error) => {
+                println!("oh oh something is wrong but im not sure why!");
+            }
+
+        };
     };
 
 }
