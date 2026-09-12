@@ -17,7 +17,7 @@ fn main() {
             Ok(created) => {
                 println!("yarp created!");
        
-                let masterpass: String = Password::new()
+                let masterpass: String = Password::new() //syg jgn lupa taro use dialoguer
                     .with_prompt("Enter master password ")
                     .with_confirmation("Confirm password ", "Password do not match! ")
                     .interact()
