@@ -35,15 +35,14 @@ fn main() {
                 
                 let mut rng = SysRng; //rng
 
-                rng.try_fill_bytes(&mut salt);
+                rng.try_fill_bytes(&mut salt); // it just spawns em salt i think
 
                 let aaron = Argon2::default()
                     .hash_password_into(
-                        masterpass.as_bytes(), 
+                        masterpass.as_bytes(), // because apparently argon wants a damn bytes not string
                         &salt, 
                         &mut argon
                     );
-
 
                 // write("vault.yarp", salt);
                 println!("salt: {:?}", salt); 
