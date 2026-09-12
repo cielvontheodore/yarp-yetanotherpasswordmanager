@@ -26,14 +26,14 @@ fn main() {
                     .interact()
                     .unwrap();
 
-                let write= write("vault.yarp", masterpass);
+                let writemp = write("vault.yarp", masterpass);
                 
                 let mut salt = [0u8; 16];
                 let mut rng = SysRng;
                 
                 rng.try_fill_bytes(&mut salt);
 
-                println!("{:?}", salt);
+                write("vault.yarp", salt);
 
             } //created is a variable and so is error. println is js a new line print
 
