@@ -3,6 +3,7 @@ use std::fs::OpenOptions;
 use std::fs::write;
 use rand::rngs::SysRng;
 use rand::TryRng;
+use argon2::Argon2;
 
 fn main() {
     let command : Vec<String> = std::env::args().collect();
@@ -26,14 +27,27 @@ fn main() {
                     .interact()
                     .unwrap();
 
-                let writemp = write("vault.yarp", masterpass);
+                // let writemp = write("vault.yarp", masterpass);
+                // its to write the password to vault.yarp its js for testing
                 
-                let mut salt = [0u8; 16];
-                let mut rng = SysRng;
+                let mut salt = [0u8; 16]; // salt to make cetakan password
+                let mut argon = [0u8; 32]; //argon to encrypt the masterpassword
                 
+                let mut rng = SysRng; //rng
+
                 rng.try_fill_bytes(&mut salt);
 
-                write("vault.yarp", salt);
+                let aaron = Argon2::default()
+                    .hash_password_into(
+                        masterpass.as_bytes(), 
+                        &salt, 
+                        &mut argon
+                    );
+
+
+                // write("vault.yarp", salt);
+                println!("salt: {:?}", salt); 
+                println!("argon: {:?}", argon); 
 
             } //created is a variable and so is error. println is js a new line print
 
