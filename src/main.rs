@@ -14,7 +14,7 @@ fn main() {
         match result {
             Ok(created) => {
                 println!("yarp created!");
-            }
+            } //created is a variable and so is error. println is js a new line print
 
             Err(error) => {
                 println!("oh oh something is wrong but im not sure why!");
